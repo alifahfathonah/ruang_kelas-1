@@ -13,7 +13,7 @@
         <div class="row align-items-center justify-content-lg-between">
           <div class="col-lg-6">
             <div class="copyright text-white text-center text-lg-left text-muted">
-              &copy; 2019 BIMBLE | BIMBINGAN BELAJAR
+              &copy; 2019 RUANG KELAS
             </div>
           </div>
           

@@ -21,7 +21,7 @@ class Pengaturan extends CI_Controller{
 			redirect(base_url('login'));
 		}
 	} 
-	function save(){
+	function save(){ 
 		if (@$_FILES['pengaturan_logo']['name']) {
 			//upload
 			  $config = array(
@@ -45,8 +45,8 @@ class Pengaturan extends CI_Controller{
 		        $foto2 = str_replace($char1, '', $foto);
 
 		        $set = array( 
-		        		'pengaturan_background_status'	=>  $_POST['pengaturan_background_status'],
-		        		'pengaturan_latar_status'	=> $_POST['pengaturan_latar_status'],
+		        		'pengaturan_background_status'	=>  @$_POST['pengaturan_background_status'],
+		        		'pengaturan_latar_status'	=> @$_POST['pengaturan_latar_status'],
 						'pengaturan_logo' => $foto2,
 						'pengaturan_latar' => $_POST['pengaturan_latar'],
 						'pengaturan_kkm' => $_POST['pengaturan_kkm'],
