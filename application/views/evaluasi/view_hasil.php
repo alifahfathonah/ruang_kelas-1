@@ -8,7 +8,7 @@
     <!-- Page content -->
 
 <div class="container-fluid mt--6">
-      <!-- Table -->
+      <!-- Table --> 
       <div class="row"> 
         <div class="col"> 
           <div class="card">
@@ -21,13 +21,15 @@
                     <th>Nama</th>
                     <th>Evaluasi</th> 
                     <th>Mapel</th>
+                    <th>Kelas</th>
                     <th>Nilai</th>
                     <th>KKM</th>
                     <th>Uraian</th>
+                    <th>Sisa Waktu</th>
                     <th>Tanggal</th>
 
                     <?php if ($this->session->userdata('level') < 3): ?>
-                      <th>Uraian</th>
+                      <th>Koreksi</th>
                     <?php endif ?>
                   
                   </tr>
@@ -40,13 +42,18 @@
                       <td><?php echo $key['user_name'] ?></td>
                       <td><?php echo $key['evaluasi_judul'] ?></td>
                       <td><?php echo $key['mapel_nama'] ?></td>
+                      <td><?php echo $key['kelas_nama'] ?></td>
                       <td><?php echo $key['hasil_nilai'] ?></td>
                       <td><?php echo $this->session->userdata('kkm'); ?></td>
                       <td><?= ($key['hasil_uraian_nilai'] == null)?"-": $key['hasil_uraian_nilai'] ?></td>
+                      <td><?php echo $key['hasil_sisa_timer'].' detik' ?></td>
                       <td><?php echo $key['hasil_tanggal'] ?></td>
 
                       <?php if ($this->session->userdata('level') < 3): ?>
-                        <td><a href="<?php echo base_url('uraian/koreksi/'.$key['hasil_id']) ?>"><button class="btn btn-primary btn-sm" <?= ($key['hasil_status'] == 1)?'disabled=""':'' ?>>Koreksi</button></a></td>
+                        <td>
+                          <a href="<?php echo base_url('evaluasi/koreksi/'.$key['hasil_id']) ?>"><button class="btn btn-success btn-sm">evaluasi</button></a>
+                          <a href="<?php echo base_url('uraian/koreksi/'.$key['hasil_id']) ?>"><button class="btn btn-primary btn-sm" <?= ($key['hasil_status'] == 1)?'disabled=""':'' ?>>uraian</button></a>
+                        </td>
                       <?php endif ?>
 
                     </tr>

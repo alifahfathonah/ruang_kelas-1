@@ -4,13 +4,15 @@ class Guru extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 	} 
-	function index(){
+	function index(){ 
 		if ( $this->session->userdata('login') == 1) {
 			$data['title'] = 'BIMBEL | DATA GURU';
 		    $data['breadcumb'] = 'DATA GURU';
-		    $data['data'] = $this->db->query("SELECT * FROM t_user as a JOIN t_mapel as b ON a.user_mapel = b.mapel_id WHERE a.user_level = 2 AND a.user_hapus = 0 order by a.user_id DESC")->result_array();
+		    $data['data'] = $this->db->query("SELECT * FROM t_user as a JOIN t_mapel as b ON a.user_mapel = b.mapel_id JOIN t_kelas as c ON a.user_kelas = c.kelas_id WHERE a.user_level = 2 AND a.user_hapus = 0 order by a.user_id DESC")->result_array();
 
 		    $data['mapel_data'] = $this->db->query("SELECT * FROM t_mapel WHERE mapel_hapus = 0")->result_array();
+
+		    $data['kelas_data'] = $this->db->query("SELECT * FROM t_kelas WHERE kelas_hapus = 0")->result_array();
 
 		    $this->load->view('v_template_admin/admin_header',$data);
 		    $this->load->view('guru/index');
@@ -36,6 +38,7 @@ class Guru extends CI_Controller{
 						'user_level' => '2',
 						'user_tanggal' => date('Y-m-d'),
 						'user_mapel' => $_POST['user_mapel'],
+						'user_kelas' => $_POST['user_kelas'],
 					);
 			$this->db->set($set);
 
@@ -63,6 +66,7 @@ class Guru extends CI_Controller{
 						'user_tlp' => $_POST['user_tlp'],
 						'user_alamat' => $_POST['user_alamat'],
 						'user_mapel' => $_POST['user_mapel'],
+						'user_kelas' => $_POST['user_kelas'],
 					);
 			$this->db->set($set);
 			$this->db->where('user_id',$id);

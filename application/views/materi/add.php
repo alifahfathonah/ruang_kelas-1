@@ -4,7 +4,7 @@
         <div class="header-body">
         </div>
       </div>
-    </div>
+    </div> 
     <!-- Page content -->
 
 <div class="container-fluid mt--6">
@@ -24,12 +24,22 @@
                   </div>
                   <div class="form-group">
                     <select name="materi_mapel" required="" class="form-control">
-                      <option value="" hidden="">-- Pilih --</option>
+                      <option value="" hidden="">-- Pilih Mapel --</option>
                       <?php foreach ($mapel_data as $key): ?>
                         <option value="<?php echo $key['mapel_id'] ?>"><?php echo $key['mapel_nama'] ?></option>
                       <?php endforeach ?>
                     </select>
                   </div>
+
+                  <div class="form-group">
+                    <select name="materi_kelas" required="" class="form-control">
+                      <option value="" hidden="">-- Pilih Kelas --</option>
+                      <?php foreach ($kelas_data as $key): ?>
+                        <option value="<?php echo $key['kelas_id'] ?>"><?php echo $key['kelas_nama'] ?></option>
+                      <?php endforeach ?>
+                    </select>
+                  </div>
+
                   <div class="form-group">
                     
                     <textarea name="materi_isi" id="editor1" rows="10" cols="80"></textarea>

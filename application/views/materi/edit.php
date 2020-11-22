@@ -8,7 +8,7 @@
     <!-- Page content -->
 
 <div class="container-fluid mt--6">
-      <!-- Table -->
+      <!-- Table --> 
       <div class="row"> 
         <div class="col">
           <div class="card">
@@ -22,6 +22,7 @@
                   <div class="form-group">
                     <input <?= ($this->session->userdata('level') < 3)?'':'readonly=""' ?> required="" placeholder="Tulis Judul" class="form-control" type="text" name="materi_judul" value="<?php echo $data['materi_judul'] ?>">
                   </div>
+
                   <div class="form-group">
                     <select name="materi_mapel" required="" class="form-control">
                       <option value="<?php echo $data['materi_mapel'] ?>" hidden=""><?php echo $data['mapel_nama'] ?></option>
@@ -30,6 +31,16 @@
                       <?php endforeach ?>
                     </select>
                   </div>
+
+                  <div class="form-group">
+                    <select name="materi_kelas" required="" class="form-control">
+                      <option value="<?php echo $data['materi_kelas'] ?>" hidden=""><?php echo $data['kelas_nama'] ?></option>
+                      <?php foreach ($kelas_data as $key): ?>
+                        <option value="<?php echo $key['kelas_id'] ?>"><?php echo $key['kelas_nama'] ?></option>
+                      <?php endforeach ?>
+                    </select>
+                  </div>
+
                   <div class="form-group">
 
                     <textarea name="materi_isi" <?= ($this->session->userdata('level') < 3)?'id="editor1"':'' ?> rows="10" cols="80"><?php echo $data['materi_isi'] ?></textarea>

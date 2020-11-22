@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 15 Nov 2020 pada 17.00
+-- Generation Time: 22 Nov 2020 pada 18.13
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -87,6 +87,8 @@ CREATE TABLE `t_evaluasi` (
   `evaluasi_pertanyaan` text,
   `evaluasi_uraian` text,
   `evaluasi_mapel` text,
+  `evaluasi_kelas` text,
+  `evaluasi_timer` text,
   `evaluasi_hapus` int(11) DEFAULT '0',
   `evaluasi_tanggal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -95,9 +97,10 @@ CREATE TABLE `t_evaluasi` (
 -- Dumping data untuk tabel `t_evaluasi`
 --
 
-INSERT INTO `t_evaluasi` (`evaluasi_id`, `evaluasi_judul`, `evaluasi_jumlah`, `evaluasi_pertanyaan`, `evaluasi_uraian`, `evaluasi_mapel`, `evaluasi_hapus`, `evaluasi_tanggal`) VALUES
-('SOAL1', 'Evaluasi', 2, '{"evaluasi_judul":"Evaluasi","evaluasi_uraian":"5","evaluasi_id":"SOAL1","evaluasi_bobot":"50","evaluasi_timer":"","evaluasi_jumlah":"2","soal_pertanyaan1":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\n              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\n              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\n              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\n              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\n              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","gambar1":"SOAL1_1","a1":"a","b1":"b","c1":"c","d1":"d","e1":"e","soal_kunci_jawaban1":"A","soal_pertanyaan2":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\n              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\n              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\n              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\n              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\n              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","gambar2":"SOAL1_2","a2":"a","b2":"b","c2":"c","d2":"d","e2":"e","soal_kunci_jawaban2":"B"}', '5', '2', 0, '2020-11-01'),
-('SOAL2', 'Mengenal Coding', 2, '{"evaluasi_judul":"Mengenal Coding","evaluasi_uraian":"3","evaluasi_id":"SOAL2","evaluasi_bobot":"50","evaluasi_timer":"70","evaluasi_jumlah":"2","soal_pertanyaan1":"satu","gambar1":"SOAL2_1","a1":"a","b1":"b","c1":"c","d1":"d","e1":"e","soal_kunci_jawaban1":"B","soal_pertanyaan2":"dua","gambar2":"SOAL2_2","a2":"a","b2":"b","c2":"c","d2":"d","e2":"e","soal_kunci_jawaban2":"B"}', '3', '1', 0, '2020-11-15');
+INSERT INTO `t_evaluasi` (`evaluasi_id`, `evaluasi_judul`, `evaluasi_jumlah`, `evaluasi_pertanyaan`, `evaluasi_uraian`, `evaluasi_mapel`, `evaluasi_kelas`, `evaluasi_timer`, `evaluasi_hapus`, `evaluasi_tanggal`) VALUES
+('SOAL1', 'Evaluasi', 2, '{"evaluasi_judul":"Evaluasi","evaluasi_uraian":"5","evaluasi_id":"SOAL1","evaluasi_bobot":"50","evaluasi_timer":"","evaluasi_jumlah":"2","soal_pertanyaan1":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\n              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\n              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\n              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\n              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\n              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","gambar1":"SOAL1_1","a1":"a","b1":"b","c1":"c","d1":"d","e1":"e","soal_kunci_jawaban1":"A","soal_pertanyaan2":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\n              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\n              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\n              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\n              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\n              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","gambar2":"SOAL1_2","a2":"a","b2":"b","c2":"c","d2":"d","e2":"e","soal_kunci_jawaban2":"B"}', '9', '1', '1', '2', 0, '2020-11-01'),
+('SOAL2', 'Mengenal Coding', 2, '{"evaluasi_judul":"Mengenal Coding","evaluasi_uraian":"3","evaluasi_id":"SOAL2","evaluasi_bobot":"50","evaluasi_timer":"70","evaluasi_jumlah":"2","soal_pertanyaan1":"satu","gambar1":"SOAL2_1","a1":"a","b1":"b","c1":"c","d1":"d","e1":"e","soal_kunci_jawaban1":"B","soal_pertanyaan2":"dua","gambar2":"SOAL2_2","a2":"a","b2":"b","c2":"c","d2":"d","e2":"e","soal_kunci_jawaban2":"B"}', '9', '1', '1', '2', 0, '2020-11-15'),
+('SOAL3', 'Cara membaca', 1, '{"evaluasi_judul":"Cara membaca","evaluasi_uraian":"9","evaluasi_mapel":"1","evaluasi_kelas":"1","evaluasi_timer":"70","evaluasi_id":"SOAL3","evaluasi_bobot":"100","evaluasi_jumlah":"1","soal_pertanyaan1":"a","gambar1":"SOAL3_1","a1":"a","b1":"b","c1":"c","d1":"d","e1":"e","soal_kunci_jawaban1":"B"}', '9', '1', '1', '2', 0, '2020-11-19');
 
 -- --------------------------------------------------------
 
@@ -110,6 +113,7 @@ CREATE TABLE `t_film` (
   `film_judul` text,
   `film_link` text,
   `film_mapel` text,
+  `film_kelas` text,
   `film_tanggal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -117,9 +121,10 @@ CREATE TABLE `t_film` (
 -- Dumping data untuk tabel `t_film`
 --
 
-INSERT INTO `t_film` (`film_id`, `film_judul`, `film_link`, `film_mapel`, `film_tanggal`) VALUES
-(2, 'Sistem Indera Pada Manusia', '9P9hSyj0o5I', '3', '2020-01-24'),
-(3, 'Ngoding untuk pemula', 'sKrri__gMIQ', '1', '2020-11-14');
+INSERT INTO `t_film` (`film_id`, `film_judul`, `film_link`, `film_mapel`, `film_kelas`, `film_tanggal`) VALUES
+(2, 'Sistem Indera Pada Manusia', '9P9hSyj0o5I', '3', '1', '2020-01-24'),
+(3, 'Ngoding untuk pemula', 'sKrri__gMIQ', '1', '2', '2020-11-14'),
+(5, 'AYU TING TING - TATITUT (OFFICIAL MUSIC VIDEO)', '5gLe94rL77Y', '2', '1', '2020-11-20');
 
 -- --------------------------------------------------------
 
@@ -131,11 +136,13 @@ CREATE TABLE `t_hasil` (
   `hasil_id` int(11) NOT NULL,
   `hasil_siswa` text,
   `hasil_mapel` text,
+  `hasil_kelas` text,
   `hasil_soal` text,
   `hasil_pertanyaan` text,
   `hasil_nilai` text,
   `hasil_status` text,
   `hasil_uraian` text,
+  `hasil_sisa_timer` text,
   `hasil_uraian_nilai` text,
   `hasil_tanggal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -144,9 +151,31 @@ CREATE TABLE `t_hasil` (
 -- Dumping data untuk tabel `t_hasil`
 --
 
-INSERT INTO `t_hasil` (`hasil_id`, `hasil_siswa`, `hasil_mapel`, `hasil_soal`, `hasil_pertanyaan`, `hasil_nilai`, `hasil_status`, `hasil_uraian`, `hasil_uraian_nilai`, `hasil_tanggal`) VALUES
-(12, '11', '2', 'SOAL1', '{"evaluasi_judul":"Evaluasi","evaluasi_mapel":"MTK","mapel":"2","evaluasi_id":"SOAL1","evaluasi_bobot":"50","evaluasi_timer":"70","evaluasi_jumlah":"2","a1":"a","b1":"b","c1":"c","d1":"d","e1":"e","soal_kunci_jawaban1":"7fc56270e7a70fa81a5935b72eacbe29","soal_jawaban1":"D","a2":"a","b2":"b","c2":"c","d2":"d","e2":"e","soal_kunci_jawaban2":"9d5ed678fe57bcca610140957afab571","soal_jawaban2":"C"}', '20', '1', '5', '100', '2020-11-15'),
-(13, '11', '1', 'SOAL2', '{"evaluasi_judul":"Mengenal Coding","evaluasi_mapel":" TKJ ","mapel":"1","evaluasi_id":"SOAL2","evaluasi_bobot":"50","evaluasi_timer":"70","evaluasi_jumlah":"2","a1":"a","b1":"b","c1":"c","d1":"d","e1":"e","soal_kunci_jawaban1":"9d5ed678fe57bcca610140957afab571","soal_jawaban1":"D","a2":"a","b2":"b","c2":"c","d2":"d","e2":"e","soal_kunci_jawaban2":"9d5ed678fe57bcca610140957afab571","soal_jawaban2":"E"}', '0', '0', '3', NULL, '2020-11-15');
+INSERT INTO `t_hasil` (`hasil_id`, `hasil_siswa`, `hasil_mapel`, `hasil_kelas`, `hasil_soal`, `hasil_pertanyaan`, `hasil_nilai`, `hasil_status`, `hasil_uraian`, `hasil_sisa_timer`, `hasil_uraian_nilai`, `hasil_tanggal`) VALUES
+(1, '11', '1', '1', 'SOAL3', '{"evaluasi_judul":"Cara membaca","evaluasi_mapel":" TKJ ","mapel":"1","evaluasi_kelas":"VII C","kelas":"1","evaluasi_timer":"70","evaluasi_id":"SOAL3","evaluasi_bobot":"100","evaluasi_jumlah":"1","a1":"a","b1":"b","c1":"c","d1":"d","e1":"e","soal_kunci_jawaban1":"9d5ed678fe57bcca610140957afab571","soal_jawaban1":"B"}', '100', '1', NULL, '70', NULL, '2020-11-22'),
+(5, '11', '1', '1', 'SOAL2', '{"evaluasi_judul":"Mengenal Coding","evaluasi_mapel":" TKJ ","mapel":"1","evaluasi_kelas":"VII C","kelas":"1","evaluasi_timer":"70","evaluasi_id":"SOAL2","evaluasi_bobot":"50","evaluasi_jumlah":"2","a1":"a","b1":"b","c1":"c","d1":"d","e1":"e","soal_kunci_jawaban1":"9d5ed678fe57bcca610140957afab571","soal_jawaban1":"D","a2":"a","b2":"b","c2":"c","d2":"d","e2":"e","soal_kunci_jawaban2":"9d5ed678fe57bcca610140957afab571","soal_jawaban2":"C"}', '0', '1', '9', '70', '55', '2020-11-23');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `t_kelas`
+--
+
+CREATE TABLE `t_kelas` (
+  `kelas_id` int(11) NOT NULL,
+  `kelas_nama` text NOT NULL,
+  `kelas_hapus` int(11) NOT NULL DEFAULT '0',
+  `kelas_tanggal` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `t_kelas`
+--
+
+INSERT INTO `t_kelas` (`kelas_id`, `kelas_nama`, `kelas_hapus`, `kelas_tanggal`) VALUES
+(1, 'VII C', 0, '2020-11-17'),
+(2, 'VII A', 0, '2020-11-17'),
+(3, 'VII B', 0, '2020-11-17');
 
 -- --------------------------------------------------------
 
@@ -201,6 +230,8 @@ CREATE TABLE `t_materi` (
   `materi_isi` text,
   `materi_judul` text,
   `materi_mapel` text,
+  `materi_kelas` text,
+  `materi_hapus` int(11) DEFAULT '0',
   `materi_tanggal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -208,9 +239,10 @@ CREATE TABLE `t_materi` (
 -- Dumping data untuk tabel `t_materi`
 --
 
-INSERT INTO `t_materi` (`materi_id`, `materi_isi`, `materi_judul`, `materi_mapel`, `materi_tanggal`) VALUES
-(5, '<p>Sistem indera adalah salah satu bagian dari sistem koordinasi yang merupakan penerima rangsang atau reseptor. Alat indera adalah reseptor yang peka terhadap rangsangan dan perubahan di sekitarnya.</p>\r\n\r\n<p>A. MATAMata berfungsi sebagai indra penglihatan (fotoreseptor). Reseptor mata adalah fovea centralis pada retina, yang merupakan lapisan mata terdalam yang peka terhadap cahaya. Bola mata terdiri dari tiga lapisan:1) Sklera (tunika fibrosa), lapisan terluar yang berwarna putih dan tidak bening. 2) Koroid (tunika vaskulosa), lapisan tengah yang mengandung pembuluh darah dan pigmen. Pembuluh darah mensuplai nutrisi bagi mata dan pigmen berfungsi menyerap refleksi cahaya pada mata. 3) Retina (tunika nervosa), lapisan terdalam mata yang banyak mengandung sel-sel fotoreseptor, antara lain: a. Sel kerucut (konus), peka terhadap intensitas cahaya tinggi dan warna. Sel konus terdiri dari sel yang peka terhadap warna merah, biru dan hijau. Sel konus menghasilkan iodopsin berupa retinin untuk melihat saat terang.</p>\r\n\r\n<p>b. Sel batang (basil), peka terhadap intensitas cahaya rendah dan tidak peka terhadap warna. Sel basil menghasilkan rhodopsin berupa retinin dan opsin untuk melihat saat gelap. Mata butuh adaptasi untuk memproduksi rhodopsin saat gelap mendadak, sehingga mata mengalami kebutaan sementara.Struktur Bola Mataa. Kornea Adalah bagian sklera yang bening dan dilindungi oleh lapisan konjungtiva yang melindungi kornea dari gesekan. Fungsi kornea adalah memfokuskan bayangan yang masuk ke mata.b. Aqueous humor Adalah cairan yang dihasilkan badan siliaris dan mengisi bagian depan lensa. Fungsi aqueous humor adalah memberi nutrisi bagi kornea dan lensa, dan membiaskan cahaya yang masuk ke mata.c. Pupil Adalah jalan masuknya cahaya ke mata.d. Iris (selaput pelangi) Adalah bagian koroid yang mengatur diameter pupil yang mempengaruhi jumlah cahaya masuk. Saat terang, iris akan mempersempit pupil, dan saat gelap, iris akan memperlebar pupil. Otot yang mengatur diameter pupil adalah otot sfingter (sirkuler) dan dilator (radial).e. Lensa mata Adalah lensa bikonkaf bening dari serat protein. Daya akomodasi adalah kemampuan lensa mata untuk mengubah kecembungan sehingga bayangan jatuh tepat pada retina.f. Vitreous humor Adalah cairan yang mengisi bagian belakang lensa mata (isi bola mata). Fungsi vitreous humor adalah menjaga bentuk dan tekanan bola mata.g. Bintik buta Adalah bagian yang tidak mengandung selsel fotoreseptor. Bintik buta adalah daerah awal saraf optik meninggalkan bola mata.h. Saraf optik (II) Adalah saraf yang mengatur indra penglihatan.</p>\r\n', 'Sistem Indera Pada Manusia', '3', '2020-11-15'),
-(6, '<p>joss gandos kotos-kotos sampek mbledos</p>\r\n', 'Materi Wifi Joss', '1', '2020-11-14');
+INSERT INTO `t_materi` (`materi_id`, `materi_isi`, `materi_judul`, `materi_mapel`, `materi_kelas`, `materi_hapus`, `materi_tanggal`) VALUES
+(5, '<p>Sistem indera adalah salah satu bagian dari sistem koordinasi yang merupakan penerima rangsang atau reseptor. Alat indera adalah reseptor yang peka terhadap rangsangan dan perubahan di sekitarnya.</p>\r\n\r\n<p>A. MATAMata berfungsi sebagai indra penglihatan (fotoreseptor). Reseptor mata adalah fovea centralis pada retina, yang merupakan lapisan mata terdalam yang peka terhadap cahaya. Bola mata terdiri dari tiga lapisan:1) Sklera (tunika fibrosa), lapisan terluar yang berwarna putih dan tidak bening. 2) Koroid (tunika vaskulosa), lapisan tengah yang mengandung pembuluh darah dan pigmen. Pembuluh darah mensuplai nutrisi bagi mata dan pigmen berfungsi menyerap refleksi cahaya pada mata. 3) Retina (tunika nervosa), lapisan terdalam mata yang banyak mengandung sel-sel fotoreseptor, antara lain: a. Sel kerucut (konus), peka terhadap intensitas cahaya tinggi dan warna. Sel konus terdiri dari sel yang peka terhadap warna merah, biru dan hijau. Sel konus menghasilkan iodopsin berupa retinin untuk melihat saat terang.</p>\r\n\r\n<p>b. Sel batang (basil), peka terhadap intensitas cahaya rendah dan tidak peka terhadap warna. Sel basil menghasilkan rhodopsin berupa retinin dan opsin untuk melihat saat gelap. Mata butuh adaptasi untuk memproduksi rhodopsin saat gelap mendadak, sehingga mata mengalami kebutaan sementara.Struktur Bola Mataa. Kornea Adalah bagian sklera yang bening dan dilindungi oleh lapisan konjungtiva yang melindungi kornea dari gesekan. Fungsi kornea adalah memfokuskan bayangan yang masuk ke mata.b. Aqueous humor Adalah cairan yang dihasilkan badan siliaris dan mengisi bagian depan lensa. Fungsi aqueous humor adalah memberi nutrisi bagi kornea dan lensa, dan membiaskan cahaya yang masuk ke mata.c. Pupil Adalah jalan masuknya cahaya ke mata.d. Iris (selaput pelangi) Adalah bagian koroid yang mengatur diameter pupil yang mempengaruhi jumlah cahaya masuk. Saat terang, iris akan mempersempit pupil, dan saat gelap, iris akan memperlebar pupil. Otot yang mengatur diameter pupil adalah otot sfingter (sirkuler) dan dilator (radial).e. Lensa mata Adalah lensa bikonkaf bening dari serat protein. Daya akomodasi adalah kemampuan lensa mata untuk mengubah kecembungan sehingga bayangan jatuh tepat pada retina.f. Vitreous humor Adalah cairan yang mengisi bagian belakang lensa mata (isi bola mata). Fungsi vitreous humor adalah menjaga bentuk dan tekanan bola mata.g. Bintik buta Adalah bagian yang tidak mengandung selsel fotoreseptor. Bintik buta adalah daerah awal saraf optik meninggalkan bola mata.h. Saraf optik (II) Adalah saraf yang mengatur indra penglihatan.</p>\r\n', 'Sistem Indera Pada Manusia', '1', '1', 0, '2020-11-15'),
+(6, '<p>joss gandos kotos-kotos sampek mbledos</p>\r\n', 'Materi Wifi Joss', '1', '1', 0, '2020-11-14'),
+(7, '<p>guru</p>\r\n', 'test admin', '1', '1', 0, '2020-11-21');
 
 -- --------------------------------------------------------
 
@@ -234,7 +266,7 @@ CREATE TABLE `t_pengaturan` (
 --
 
 INSERT INTO `t_pengaturan` (`pengaturan_id`, `pengaturan_background`, `pengaturan_background_status`, `pengaturan_kkm`, `pengaturan_logo`, `pengaturan_latar`, `pengaturan_latar_status`, `pengaturan_tanggal`) VALUES
-(1, '1048.png', NULL, '70', 'blue.png', '#9d9dff', 'on', '2020-11-01');
+(1, '1048.png', NULL, '70', 'blue.png', '#9d9dff', 'on', '2020-11-16');
 
 -- --------------------------------------------------------
 
@@ -248,6 +280,7 @@ CREATE TABLE `t_uraian` (
   `uraian_soal` text,
   `uraian_status` int(11) DEFAULT NULL,
   `uraian_mapel` int(11) DEFAULT NULL,
+  `uraian_kelas` int(11) DEFAULT NULL,
   `uraian_hapus` int(11) DEFAULT '0',
   `uraian_tanggal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -256,11 +289,8 @@ CREATE TABLE `t_uraian` (
 -- Dumping data untuk tabel `t_uraian`
 --
 
-INSERT INTO `t_uraian` (`uraian_id`, `uraian_judul`, `uraian_soal`, `uraian_status`, `uraian_mapel`, `uraian_hapus`, `uraian_tanggal`) VALUES
-(3, 'Uraian 2', '{"uraian_judul":"Uraian 2","id":"3","soal1":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal2":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal3":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal4":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal5":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum."}', 1, 1, 0, '2020-04-22'),
-(5, 'Uraian 1', '{"uraian_judul":"Uraian","id":"5","soal1":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal2":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal3":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal4":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal5":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum."}', 1, 3, 0, '2020-04-22'),
-(6, 'Uraian', '{"uraian_judul":"Uraian","id":"5","soal1":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal2":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal3":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal4":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal5":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum."}', 1, 2, 0, '2020-04-22'),
-(7, 'Uraian 0', '{"uraian_judul":"Uraian","id":"5","soal1":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal2":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal3":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal4":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","soal5":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum."}', 1, 2, 0, '2020-04-22');
+INSERT INTO `t_uraian` (`uraian_id`, `uraian_judul`, `uraian_soal`, `uraian_status`, `uraian_mapel`, `uraian_kelas`, `uraian_hapus`, `uraian_tanggal`) VALUES
+(9, 'Uraian 1', '{"uraian_judul":"Uraian 1","id":"9","uraian_mapel":"1","uraian_kelas":"1","soal1":"satu","soal2":"dua","soal3":"tiga","soal4":"empat","soal5":"lima"}', 0, 1, 1, 0, '2020-11-21');
 
 -- --------------------------------------------------------
 
@@ -283,7 +313,10 @@ CREATE TABLE `t_uraian_hasil` (
 
 INSERT INTO `t_uraian_hasil` (`uraian_hasil_id`, `uraian_hasil_judul`, `uraian_hasil_soal`, `uraian_hasil_hasil`, `uraian_hasil_mapel`, `uraian_hasil_tanggal`) VALUES
 (6, 'Uraian', '{"uraian_judul":"Uraian","id":"SOAL1","uraian_mapel":"IPA","mapel":"3","soal1":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban1":"s","soal2":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban2":"s","soal3":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban3":"s","soal4":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban4":"s","soal5":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban5":"s"}', '12', '3', '2020-11-15'),
-(7, 'Uraian 2', '{"uraian_judul":"Uraian 2","id":"SOAL2","uraian_mapel":" TKJ ","mapel":"1","soal1":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban1":"a","soal2":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban2":"b","soal3":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban3":"c","soal4":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban4":"d","soal5":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban5":"e"}', '13', '1', '2020-11-15');
+(7, 'Uraian 2', '{"uraian_judul":"Uraian 2","id":"SOAL2","uraian_mapel":" TKJ ","mapel":"1","soal1":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban1":"a","soal2":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban2":"b","soal3":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban3":"c","soal4":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban4":"d","soal5":"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\\r\\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\\r\\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\r\\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\\r\\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\\r\\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.","jawaban5":"e"}', '13', '1', '2020-11-15'),
+(8, 'Uraian 1', '{"uraian_judul":"Uraian 1","id":"SOAL2","uraian_mapel":" TKJ ","mapel":"1","soal1":"satu","jawaban1":"cx","soal2":"dua","jawaban2":"aa","soal3":"tiga","jawaban3":"aaa","soal4":"empat","jawaban4":"aa","soal5":"lima","jawaban5":"a"}', '2', '1', '2020-11-23'),
+(9, 'Uraian 1', '{"uraian_judul":"Uraian 1","id":"SOAL2","uraian_mapel":" TKJ ","mapel":"1","soal1":"satu","jawaban1":"a","soal2":"dua","jawaban2":"a","soal3":"tiga","jawaban3":"a","soal4":"empat","jawaban4":"a","soal5":"lima","jawaban5":"a"}', '3', '1', '2020-11-23'),
+(10, 'Uraian 1', '{"uraian_judul":"Uraian 1","id":"SOAL2","uraian_mapel":" TKJ ","mapel":"1","soal1":"satu","jawaban1":"a","soal2":"dua","jawaban2":"a","soal3":"tiga","jawaban3":"a","soal4":"empat","jawaban4":"a","soal5":"lima","jawaban5":"a"}', '5', '1', '2020-11-23');
 
 -- --------------------------------------------------------
 
@@ -304,6 +337,7 @@ CREATE TABLE `t_user` (
   `user_biodata` text,
   `user_level` int(11) DEFAULT NULL,
   `user_mapel` int(11) DEFAULT NULL,
+  `user_kelas` int(11) DEFAULT NULL,
   `user_tanggal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -311,12 +345,12 @@ CREATE TABLE `t_user` (
 -- Dumping data untuk tabel `t_user`
 --
 
-INSERT INTO `t_user` (`user_id`, `user_hapus`, `user_name`, `user_email`, `user_password`, `user_tempat_lahir`, `user_tgl_lahir`, `user_alamat`, `user_tlp`, `user_biodata`, `user_level`, `user_mapel`, `user_tanggal`) VALUES
-(1, 0, 'Pembimbing', 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL, NULL, NULL, NULL, NULL, 1, NULL, '2020-01-23'),
-(9, 0, 'Sasuke', '12345', '827ccb0eea8a706c4c34a16891f84e7b', 'Konoha', '2020-01-22', 'Konoha Gakure', '08517178187', NULL, 3, NULL, '2020-01-23'),
-(11, 0, 'Naruto', '123', '202cb962ac59075b964b07152d234b70', 'Konoha', '2020-01-08', 'Konoha Gakure', '08638638763', NULL, 3, NULL, '2020-01-24'),
-(12, 0, 'Imam Ghozali', '1234', '81dc9bdb52d04dc20036dbd8313ed055', 'Konoha', '2020-11-02', 'alamat', '085858588585', NULL, 2, 2, '2020-11-14'),
-(14, 0, 'Siti Fadilah', '123', '202cb962ac59075b964b07152d234b70', 'Konoha', '2020-11-25', 'alamat', '0685875885', NULL, 2, 1, '2020-11-14');
+INSERT INTO `t_user` (`user_id`, `user_hapus`, `user_name`, `user_email`, `user_password`, `user_tempat_lahir`, `user_tgl_lahir`, `user_alamat`, `user_tlp`, `user_biodata`, `user_level`, `user_mapel`, `user_kelas`, `user_tanggal`) VALUES
+(1, 0, 'Pembimbing', 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL, NULL, NULL, NULL, NULL, 1, NULL, 0, '2020-01-23'),
+(9, 0, 'Sasuke', '12345', '827ccb0eea8a706c4c34a16891f84e7b', 'Konoha', '2020-01-22', 'Konoha Gakure', '08517178187', NULL, 3, 1, 1, '2020-01-23'),
+(11, 0, 'Naruto', '123', '202cb962ac59075b964b07152d234b70', 'Konoha', '2020-01-08', 'Konoha Gakure', '08638638763', NULL, 3, 1, 1, '2020-01-24'),
+(12, 0, 'Imam Ghozali', '1234', '81dc9bdb52d04dc20036dbd8313ed055', 'Konoha', '2020-11-02', 'alamat', '085858588585', NULL, 2, 1, 1, '2020-11-14'),
+(14, 0, 'Siti Fadilah', '123', '202cb962ac59075b964b07152d234b70', 'Konoha', '2020-11-25', 'alamat', '0685875885', NULL, 2, 1, 1, '2020-11-14');
 
 --
 -- Indexes for dumped tables
@@ -345,6 +379,12 @@ ALTER TABLE `t_film`
 --
 ALTER TABLE `t_hasil`
   ADD PRIMARY KEY (`hasil_id`);
+
+--
+-- Indexes for table `t_kelas`
+--
+ALTER TABLE `t_kelas`
+  ADD PRIMARY KEY (`kelas_id`);
 
 --
 -- Indexes for table `t_kurikulum`
@@ -406,12 +446,17 @@ ALTER TABLE `t_diskusi`
 -- AUTO_INCREMENT for table `t_film`
 --
 ALTER TABLE `t_film`
-  MODIFY `film_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `film_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `t_hasil`
 --
 ALTER TABLE `t_hasil`
-  MODIFY `hasil_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `hasil_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `t_kelas`
+--
+ALTER TABLE `t_kelas`
+  MODIFY `kelas_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `t_kurikulum`
 --
@@ -426,7 +471,7 @@ ALTER TABLE `t_mapel`
 -- AUTO_INCREMENT for table `t_materi`
 --
 ALTER TABLE `t_materi`
-  MODIFY `materi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `materi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `t_pengaturan`
 --
@@ -436,12 +481,12 @@ ALTER TABLE `t_pengaturan`
 -- AUTO_INCREMENT for table `t_uraian`
 --
 ALTER TABLE `t_uraian`
-  MODIFY `uraian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `uraian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `t_uraian_hasil`
 --
 ALTER TABLE `t_uraian_hasil`
-  MODIFY `uraian_hasil_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `uraian_hasil_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `t_user`
 --

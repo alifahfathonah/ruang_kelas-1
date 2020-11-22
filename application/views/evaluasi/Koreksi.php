@@ -18,7 +18,7 @@
               </div>
               <!-- Card body -->
               
-
+ 
               <div class="card-body">
 
 
@@ -40,7 +40,7 @@
                    <input type="hidden" name="kelas" value="<?php echo $kelas_id ?>">
                  </div>
                  <div class="form-group col-md-2">
-                   <label>Waktu <small class="text-danger">( Detik )</small></label>
+                   <label>Sisa Waktu <small class="text-danger">( Detik )</small></label>
                    <input id="timer" value="<?php echo $timer; ?>" type="text" name="evaluasi_timer" class="form-control" readonly>
                  </div>
                  <div class="form-group col-md-3">
@@ -154,13 +154,21 @@
                         <div class="col-md-3">
                           <input type="hidden" name="soal_kunci_jawaban<?php echo $i; ?>" value="<?php echo md5($soal[$i]['soal_kunci_jawaban'.$i]) ?>">
                           <select class="form-control" name="soal_jawaban<?php echo $i; ?>" required="">
-                            <option value="" hidden="">-- Pilih --</option>
+                            <option value="<?php echo $hasil[0]['soal_jawaban'.$i] ?>" hidden=""><?php echo $hasil[0]['soal_jawaban'.$i] ?></option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="C">C</option>
                             <option value="D">D</option>
                             <option value="E">E</option>
                           </select>
+                        </div>
+                        <div class="col-md-1">
+                          <?php if ($hasil[0]['soal_kunci_jawaban'.$i] == md5($hasil[0]['soal_jawaban'.$i])): ?>
+                            <span class="text-success"><i class="fa fa-check"></i></span>
+                          <?php else: ?>
+                            <span class="text-danger"><i class="fa fa-times"></i></span>  
+                          <?php endif ?>
+                          
                         </div>
                       </div>
                     </div>
@@ -169,7 +177,7 @@
                 <?php endfor ?>
 
                   <hr> 
-                  <button class="btn btn-sm btn-success" type="submit"><i class="fa fa-check"></i> Selesai Mengerjakan</button>
+                  <!-- <button class="btn btn-sm btn-success" type="submit"><i class="fa fa-check"></i> Selesai Koreksi</button> -->
                  </form>
                      
                 </div>
@@ -178,27 +186,3 @@
 
 
             </div>
-
-<script type="text/javascript">
- $(document).ready(function() {
-    var detik   = <?php echo $timer*60 ?>; 
-              
-      function hitung() {
-        setTimeout(hitung,1000);
-
-        $('#timer').val(detik);
-        detik --;
-
-          if (detik <= 10) {
-            $('#timer').attr('style','color: red');
-
-             if (detik == 0) {
-                $('#form').trigger('submit');
-              } 
-          }
-          
-        }           
-        hitung();
-      }); 
-
-</script>

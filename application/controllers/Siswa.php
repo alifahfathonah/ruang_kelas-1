@@ -4,11 +4,24 @@ class Siswa extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 	} 
-	function index(){
+	function index(){ 
 		if ( $this->session->userdata('login') == 1) {
 			$data['title'] = 'BIMBEL | DATA SISWA';
 		    $data['breadcumb'] = 'DATA SISWA';
-		    $data['data'] = $this->db->query("SELECT * FROM t_user WHERE user_level = 3 AND user_hapus = 0 order by user_id DESC")->result_array();
+
+		    $id_kelas = $this->session->userdata('kelas');
+
+		    if ($this->session->userdata('level') == '2') {
+		    	
+		    	$data['data'] = $this->db->query("SELECT * FROM t_user as a JOIN t_kelas as b ON a.user_kelas = b.kelas_id WHERE a.user_level = 3 AND a.user_hapus = 0 AND a.user_kelas = '$id_kelas' order by a.user_id DESC")->result_array();
+		    	$data['kelas_data'] = $this->db->query("SELECT * FROM t_kelas WHERE kelas_hapus = 0 AND kelas_id = '$id_kelas'")->result_array();
+
+		    }else{
+
+		    	$data['data'] = $this->db->query("SELECT * FROM t_user as a JOIN t_kelas as b ON a.user_kelas = b.kelas_id WHERE a.user_level = 3 AND a.user_hapus = 0 order by a.user_id DESC")->result_array();
+		    	$data['kelas_data'] = $this->db->query("SELECT * FROM t_kelas WHERE kelas_hapus = 0")->result_array();
+		    }
+
 		    $this->load->view('v_template_admin/admin_header',$data);
 		    $this->load->view('siswa/index');
 		    $this->load->view('v_template_admin/admin_footer');
@@ -32,6 +45,7 @@ class Siswa extends CI_Controller{
 						'user_alamat' => $_POST['user_alamat'],
 						'user_level' => '3',
 						'user_tanggal' => date('Y-m-d'),
+						'user_kelas' => $_POST['user_kelas'],
 					);
 			$this->db->set($set);
 
@@ -58,6 +72,7 @@ class Siswa extends CI_Controller{
 						'user_tgl_lahir' => $_POST['user_tgl_lahir'],
 						'user_tlp' => $_POST['user_tlp'],
 						'user_alamat' => $_POST['user_alamat'],
+						'user_kelas' => $_POST['user_kelas'],
 					);
 			$this->db->set($set);
 			$this->db->where('user_id',$id);

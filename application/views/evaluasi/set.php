@@ -7,8 +7,8 @@
     </div>
     <!-- Page content -->
  
-<div class="container-fluid mt--6"> 
-      <!-- Table -->
+<div class="container-fluid mt--6">  
+      <!-- Table --> 
       <div class="row">
         <div class="col"> 
           <div class="card">
@@ -29,15 +29,25 @@
                    <label>Judul Pertanyaan</label>
                    <input value="<?php echo $judul; ?>" type="text" name="evaluasi_judul" class="form-control" readonly>
                  </div>
-                 <div class="form-group col-md-4">
+                 <div class="form-group col-md-2">
                    <label>Judul Uraian</label>
                    <input type="hidden" name="evaluasi_uraian" value="<?php echo $uraian_data['uraian_id'] ?>">
                    <input value="<?php echo $uraian_data['uraian_judul']; ?>" type="text" class="form-control" readonly>
                  </div>
-                 <div class="form-group col-md-4">
+                 <div class="form-group col-md-2">
                    <label>Mata Pelajaran</label>
                    <input type="hidden" name="evaluasi_mapel" value="<?php echo $mapel_id ?>">
                    <input value="<?php echo $mapel_nama; ?>" type="text" class="form-control" readonly>
+                 </div>
+                 <div class="form-group col-md-2">
+                   <label>Kelas</label>
+                   <input type="hidden" name="evaluasi_kelas" value="<?php echo $kelas_id ?>">
+                   <input value="<?php echo $kelas_nama; ?>" type="text" class="form-control" readonly>
+                 </div>
+                 <div class="form-group col-md-2">
+                   <label>Waktu <small class="text-danger">( Menit )</small></label>
+                   <input type="hidden" name="evaluasi_timer" value="<?php echo $timer ?>">
+                   <input value="<?php echo $timer; ?>" type="text" class="form-control" readonly>
                  </div>
                  <div class="form-group col-md-3">
                    <label>ID Soal</label>

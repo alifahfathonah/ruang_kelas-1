@@ -35,6 +35,7 @@ class Login extends CI_Controller{
               $this->session->set_userdata('login','1');
               $this->session->set_userdata('level',$cek['user_level']);
               $this->session->set_userdata('mapel',$cek['user_mapel']);
+              $this->session->set_userdata('kelas',$cek['user_kelas']);
 
               //pengaturan
               $p = $this->db->query("SELECT * FROM t_pengaturan")->row_array();

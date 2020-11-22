@@ -9,7 +9,7 @@
 
 <div class="container-fluid mt--6">
       <!-- Table -->
-      <div class="row"> 
+      <div class="row">  
         <div class="col">
           <div class="card">
             <!-- Card header -->
@@ -23,6 +23,7 @@
                     <th style="width: 1px;">No</th>
                     <th style="width: 100%;">Judul</th>
                     <th>Mapel</th>
+                    <th>Kelas</th>
                     <th>Status</th>
                     <th>Tanggal</th>
                     <th>Aksi</th>
@@ -35,6 +36,7 @@
                       <td><?php echo $no; ?></td>
                       <td style="width: 100%;"><?php echo $key['uraian_judul'] ?></td>
                       <td><?php echo $key['mapel_nama'] ?></td>
+                      <td><?php echo $key['kelas_nama'] ?></td>
                       <td><?php echo ($key['uraian_status'] == 1)?'Digunakan':'Belum Digunakan' ?></td>
                       <td><?php echo $key['uraian_tanggal'] ?></td>
                       <div style="width: 130px;">

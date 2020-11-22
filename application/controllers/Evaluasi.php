@@ -9,16 +9,19 @@ class Evaluasi extends CI_Controller{
 			$data['title'] = 'BIMBEL | SOAL EVALUASI';
 		    $data['breadcumb'] = 'SOAL EVALUASI';
 		    $id_mapel = $this->session->userdata('mapel');
+		    $kelas = $this->session->userdata('kelas');
 
-		    if ($this->session->userdata('level') == '2') {
+		    if ($this->session->userdata('level') == '2') { 
 		    	
-		    	$data['data'] = $this->db->query("SELECT * FROM t_evaluasi as a JOIN t_mapel as b ON a.evaluasi_mapel = b.mapel_id where evaluasi_mapel = '$id_mapel' AND evaluasi_hapus = 0 order by evaluasi_id DESC")->result_array();
+		    	$data['data'] = $this->db->query("SELECT * FROM t_evaluasi as a JOIN t_mapel as b ON a.evaluasi_mapel = b.mapel_id JOIN t_kelas as c ON a.evaluasi_kelas = c.kelas_id where a.evaluasi_mapel = '$id_mapel' AND a.evaluasi_hapus = 0 AND a.evaluasi_kelas = '$kelas' order by a.evaluasi_id DESC")->result_array();
  				$data['mapel_data'] = $this->db->query("SELECT * FROM t_mapel WHERE mapel_id = '$id_mapel' AND mapel_hapus = 0")->result_array();
+ 				$data['kelas_data'] = $this->db->query("SELECT * FROM t_kelas WHERE kelas_id = '$kelas' AND kelas_hapus = 0")->result_array();
 
 		    }else{
 
-		    	$data['data'] = $this->db->query("SELECT * FROM t_evaluasi as a JOIN t_mapel as b ON a.evaluasi_mapel = b.mapel_id where evaluasi_hapus = 0 order by evaluasi_id DESC")->result_array();
+		    	$data['data'] = $this->db->query("SELECT * FROM t_evaluasi as a JOIN t_mapel as b ON a.evaluasi_mapel = b.mapel_id JOIN t_kelas as c ON a.evaluasi_kelas = c.kelas_id where a.evaluasi_hapus = 0 order by a.evaluasi_id DESC")->result_array();
  				$data['mapel_data'] = $this->db->query("SELECT * FROM t_mapel WHERE mapel_hapus = 0")->result_array();
+ 				$data['kelas_data'] = $this->db->query("SELECT * FROM t_kelas WHERE kelas_hapus = 0")->result_array();
 		    }
 
 		    $this->load->view('v_template_admin/admin_header',$data);
@@ -40,12 +43,19 @@ class Evaluasi extends CI_Controller{
 		 $data['breadcumb'] = 'SOAL EVALUASI';
 		 $data['jumlah'] = $_POST['evaluasi_jumlah'];
 		 $data['judul'] = $_POST['evaluasi_judul'];
+		 $data['timer'] = $_POST['evaluasi_timer'];
 
 		 //mapel
 		 $idmapel = $_POST['evaluasi_mapel'];
 		 $c = $this->db->query("SELECT * FROM t_mapel WHERE mapel_id = '$idmapel'")->row_array();
 		 $data['mapel_nama'] = $c['mapel_nama'];
 		 $data['mapel_id'] = $c['mapel_id'];
+
+		 //kelas
+		 $idkelas = $_POST['evaluasi_kelas'];
+		 $k = $this->db->query("SELECT * FROM t_kelas WHERE kelas_id = '$idkelas'")->row_array();
+		 $data['kelas_nama'] = $k['kelas_nama'];
+		 $data['kelas_id'] = $k['kelas_id'];
 		 
 		 $data['kkm'] = $this->db->query("SELECT pengaturan_kkm FROM t_pengaturan")->row_array();
 		 $data['bobot'] = round(100 / $data['jumlah']);
@@ -89,6 +99,8 @@ class Evaluasi extends CI_Controller{
 						'evaluasi_tanggal' => date('Y-m-d'), 
 						'evaluasi_uraian' => $uraian,
 						'evaluasi_mapel' => $_POST['evaluasi_mapel'],
+						'evaluasi_kelas' => $_POST['evaluasi_kelas'],
+						'evaluasi_timer' => $_POST['evaluasi_timer'],
 					);
 
 		$this->db->set($set);
@@ -119,6 +131,21 @@ class Evaluasi extends CI_Controller{
 		$xid = $data['data']['evaluasi_uraian'];
 		$x = $this->db->query("SELECT * FROM t_uraian where uraian_id = '$xid'")->row_array();
 		$data['uraian_judul'] = $x['uraian_judul'];
+
+
+		$data['timer'] = $data['data']['evaluasi_timer'];
+
+		//mapel
+		$idmapel = $data['data']['evaluasi_mapel'];
+		$c = $this->db->query("SELECT * FROM t_mapel WHERE mapel_id = '$idmapel'")->row_array();
+		$data['mapel_nama'] = $c['mapel_nama'];
+		$data['mapel_id'] = $c['mapel_id'];
+
+		//kelas
+		$idkelas = $data['data']['evaluasi_kelas'];
+		$k = $this->db->query("SELECT * FROM t_kelas WHERE kelas_id = '$idkelas'")->row_array();
+		$data['kelas_nama'] = $k['kelas_nama'];
+		$data['kelas_id'] = $k['kelas_id'];
 
 		//soal di pecah bentuk array//
 		$soal = '['.$data['data']['evaluasi_pertanyaan'].']';
@@ -177,7 +204,9 @@ class Evaluasi extends CI_Controller{
 		if ( $this->session->userdata('login') == 1) {
 			$data['title'] = 'BIMBEL | KERJAKAN EVALUASI';
 		    $data['breadcumb'] = 'KERJAKAN EVALUASI';
-		    $data['data'] = $this->db->query("SELECT * FROM t_evaluasi as a JOIN t_mapel as b ON a.evaluasi_mapel = b.mapel_id where a.evaluasi_hapus = 0 order by a.evaluasi_id DESC")->result_array();
+
+		    $kelas = $this->session->userdata('kelas');
+		    $data['data'] = $this->db->query("SELECT * FROM t_evaluasi as a JOIN t_mapel as b ON a.evaluasi_mapel = b.mapel_id JOIN t_kelas as c ON a.evaluasi_kelas = c.kelas_id where a.evaluasi_hapus = 0 AND a.evaluasi_kelas = '$kelas' order by a.evaluasi_id DESC")->result_array();
 		    $this->load->view('v_template_admin/admin_header',$data);
 		    $this->load->view('evaluasi/kerjakan');
 		    $this->load->view('v_template_admin/admin_footer');
@@ -196,11 +225,19 @@ class Evaluasi extends CI_Controller{
 		}else{
 			$data['title'] = 'BIMBEL | SOAL EVALUASI';
 			$data['breadcumb'] = 'SOAL EVALUASI';
-			$data['data'] = $this->db->query("SELECT * FROM t_evaluasi as a JOIN t_mapel as b ON a.evaluasi_mapel = b.mapel_id where a.evaluasi_id = '$id' order by a.evaluasi_id DESC")->row_array();
+			$data['data'] = $this->db->query("SELECT * FROM t_evaluasi as a JOIN t_mapel as b ON a.evaluasi_mapel = b.mapel_id JOIN t_kelas as c ON a.evaluasi_kelas = c.kelas_id where a.evaluasi_id = '$id' order by a.evaluasi_id DESC")->row_array();
+			$data['timer'] = $data['data']['evaluasi_timer'];
 			$data['jumlah'] = $data['data']['evaluasi_jumlah'];
 			$data['judul'] = $data['data']['evaluasi_judul'];
+			
+			//mapel
 			$data['mapel_val'] = $data['data']['mapel_nama'];
 			$data['mapel_id'] = $data['data']['mapel_id'];
+
+			//kelas
+			$data['kelas_val'] = $data['data']['kelas_nama'];
+			$data['kelas_id'] = $data['data']['kelas_id'];
+
 			$data['kkm'] = $this->db->query("SELECT pengaturan_kkm FROM t_pengaturan")->row_array();
 			$data['bobot'] = round(100 / $data['jumlah']);
 
@@ -241,7 +278,8 @@ class Evaluasi extends CI_Controller{
 						'hasil_pertanyaan' => json_encode($_POST),
 						'hasil_nilai' => $nilai,
 						'hasil_mapel' => $_POST['mapel'],
-						// 'hasil_sisa_waktu' => $_POST['evaluasi_timer'],
+						'hasil_kelas' => $_POST['kelas'],
+						'hasil_sisa_timer' => $_POST['evaluasi_timer'],
 						'hasil_status' => $status,
 						'hasil_tanggal' => date('Y-m-d'), 
 					);
@@ -268,7 +306,9 @@ class Evaluasi extends CI_Controller{
 						'hasil_mapel' => $_POST['mapel'],
 						'hasil_status' => $status,
 						'hasil_uraian' => $iduraian,
-						'hasil_tanggal' => date('Y-m-d'), 
+						'hasil_tanggal' => date('Y-m-d'),
+						'hasil_kelas' => $_POST['kelas'],
+						'hasil_sisa_timer' => $_POST['evaluasi_timer'], 
 					);
 
 		$this->db->set($set);
@@ -304,7 +344,23 @@ class Evaluasi extends CI_Controller{
 		if ( $this->session->userdata('login') == 1) {
 			$data['title'] = 'BIMBEL | HASIL EVALUASI';
 		    $data['breadcumb'] = 'HASIL EVALUASI';
-		    $data['data'] = $this->db->query("SELECT * FROM t_hasil AS a JOIN t_user AS b ON a.hasil_siswa = b.user_id JOIN t_evaluasi AS c ON a.hasil_soal = c.evaluasi_id JOIN t_mapel as d ON a.hasil_mapel = d.mapel_id order BY a.hasil_id DESC")->result_array();
+		    $id = $this->session->userdata('id');
+		    $kelas = $this->session->userdata('kelas');
+		    $level = $this->session->userdata('level');
+
+		    switch ($level) {
+		    	case '1': 
+		    		$data['data'] = $this->db->query("SELECT * FROM t_hasil AS a JOIN t_user AS b ON a.hasil_siswa = b.user_id JOIN t_evaluasi AS c ON a.hasil_soal = c.evaluasi_id JOIN t_mapel as d ON a.hasil_mapel = d.mapel_id JOIN t_kelas as e ON a.hasil_kelas = e.kelas_id order BY a.hasil_id DESC")->result_array();
+		    		break;
+		    	case '2':
+		    		$data['data'] = $this->db->query("SELECT * FROM t_hasil AS a JOIN t_user AS b ON a.hasil_siswa = b.user_id JOIN t_evaluasi AS c ON a.hasil_soal = c.evaluasi_id JOIN t_mapel as d ON a.hasil_mapel = d.mapel_id JOIN t_kelas as e ON a.hasil_kelas = e.kelas_id WHERE a.hasil_kelas = '$kelas' order BY a.hasil_id DESC")->result_array();
+		    		break;
+		    	case '3':
+		    		$data['data'] = $this->db->query("SELECT * FROM t_hasil AS a JOIN t_user AS b ON a.hasil_siswa = b.user_id JOIN t_evaluasi AS c ON a.hasil_soal = c.evaluasi_id JOIN t_mapel as d ON a.hasil_mapel = d.mapel_id JOIN t_kelas as e ON a.hasil_kelas = e.kelas_id WHERE a.hasil_siswa = '$id' order BY a.hasil_id DESC")->result_array();
+		    		break;
+		    	
+		    }
+
 		    $this->load->view('v_template_admin/admin_header',$data);
 		    $this->load->view('evaluasi/view_hasil');
 		    $this->load->view('v_template_admin/admin_footer');
@@ -313,5 +369,44 @@ class Evaluasi extends CI_Controller{
 		else{
 			redirect(base_url('login'));
 		}
+	}
+	function koreksi($id){
+		$db = $this->db->query("SELECT * FROM t_hasil where hasil_id = '$id' order by hasil_id DESC")->row_array();
+
+		//hasil di pecah bentuk array//
+		$soal1 = '['.$db['hasil_pertanyaan'].']';
+		$c = str_replace(',"soal_pertanyaan', '},{"soal_pertanyaan', $soal1);
+		$data['hasil'] = json_decode($c,true);
+
+			
+		$idsoal = $data['hasil'][0]['evaluasi_id'];
+		$data['title'] = 'BIMBEL | SOAL EVALUASI';
+		$data['breadcumb'] = 'SOAL EVALUASI';
+		$data['data'] = $this->db->query("SELECT * FROM t_evaluasi as a JOIN t_mapel as b ON a.evaluasi_mapel = b.mapel_id JOIN t_kelas as c ON a.evaluasi_kelas = c.kelas_id where a.evaluasi_id = '$idsoal' order by a.evaluasi_id DESC")->row_array();
+		$data['timer'] = $data['hasil'][0]['evaluasi_timer'];
+		$data['jumlah'] = $data['data']['evaluasi_jumlah'];
+		$data['judul'] = $data['data']['evaluasi_judul'];
+		
+		//mapel
+		$data['mapel_val'] = $data['data']['mapel_nama'];
+		$data['mapel_id'] = $data['data']['mapel_id'];
+
+		//kelas
+		$data['kelas_val'] = $data['data']['kelas_nama'];
+		$data['kelas_id'] = $data['data']['kelas_id'];
+
+		$data['kkm'] = $this->db->query("SELECT pengaturan_kkm FROM t_pengaturan")->row_array();
+		$data['bobot'] = round(100 / $data['jumlah']);
+
+		$data['idsoal'] = $id;
+
+		//soal di pecah bentuk array//
+		$soal = '['.$data['data']['evaluasi_pertanyaan'].']';
+		$v = str_replace(',"soal_pertanyaan', '},{"soal_pertanyaan', $soal);
+		$data['soal'] = json_decode($v,true);
+		
+		$this->load->view('v_template_admin/admin_header',$data);
+		$this->load->view('evaluasi/koreksi');
+		$this->load->view('v_template_admin/admin_footer');
 	}
 }

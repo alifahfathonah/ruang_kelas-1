@@ -3,7 +3,7 @@
       <div class="container-fluid">
         <div class="header-body">
         </div>
-      </div>
+      </div> 
     </div>
     <!-- Page content -->
 
@@ -21,8 +21,9 @@
                 <thead class="thead-light">
                   <tr>
                     <th>No</th>
-                    <th>NIS/NISN</th>
                     <th>Nama</th>
+                    <th>Kelas</th>
+                    <th>NIS/NISN</th>
                     <th>TTL</th>
                     <th>Alamat</th>
                     <th>No Hp</th>
@@ -34,8 +35,9 @@
                   <?php foreach ($data as $key): ?>
                     <tr>
                       <td><?php echo $no; ?></td>
-                      <td><?php echo $key['user_email']; ?></td>
                       <td><?php echo $key['user_name']; ?></td>
+                      <td><?php echo $key['kelas_nama']; ?></td>
+                      <td><?php echo $key['user_email']; ?></td>
                       <?php $d = date_create($key['user_tgl_lahir']); $tl = date_format($d, 'd/m/Y'); ?>
                       <td><?php echo $key['user_tempat_lahir'].', '.$tl; ?></td>
                       <td><?php echo $key['user_alamat']; ?></td>
@@ -69,6 +71,21 @@
                                     </div>
                                   </div>
                                 </div>
+
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="form-group">
+                                    <label class="col-form-label form-control-label">Kelas</label>
+                                      <select name="user_kelas" class="form-control" required="">
+                                        <option value="<?php echo $key['user_kelas'] ?>" hidden=""><?php echo $key['kelas_nama'] ?></option>
+                                        <?php foreach ($kelas_data as $key1): ?>
+                                          <option value="<?php echo $key1['kelas_id'] ?>"><?php echo $key1['kelas_nama'] ?></option>
+                                        <?php endforeach ?>
+                                      </select>
+                                  </div>
+                                </div>
+                              </div>
+
                                 <div class="row">
                                   <div class="col-md-12">
                                     <div class="form-group">
@@ -151,6 +168,21 @@
                       </div>
                     </div>
                   </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="col-form-label form-control-label">Kelas</label>
+                          <select name="user_kelas" class="form-control" required="">
+                            <option value="" hidden="">-- Pilih --</option>
+                            <?php foreach ($kelas_data as $key): ?>
+                              <option value="<?php echo $key['kelas_id'] ?>"><?php echo $key['kelas_nama'] ?></option>
+                            <?php endforeach ?>
+                          </select>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">

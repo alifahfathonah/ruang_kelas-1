@@ -6,14 +6,15 @@ class Uraian extends CI_Controller{
 	} 
 	function index(){
 		if ( $this->session->userdata('login') == 1) {
-			$data['title'] = 'BIMBEL | URAIAN';
+			$data['title'] = 'BIMBEL | URAIAN'; 
 		    $data['breadcumb'] = 'URAIAN';
 		    $id_mapel = $this->session->userdata('mapel');
+		    $id_kelas = $this->session->userdata('kelas');
 
 		    if ($this->session->userdata('level') == '2') {
-		    	$data['data'] = $this->db->query("SELECT * FROM t_uraian as a JOIN t_mapel as b ON a.uraian_mapel = b.mapel_id WHERE a.uraian_mapel = '$id_mapel' AND a.uraian_hapus = 0 order by a.uraian_id DESC")->result_array();
+		    	$data['data'] = $this->db->query("SELECT * FROM t_uraian as a JOIN t_mapel as b ON a.uraian_mapel = b.mapel_id JOIN t_kelas as c ON a.uraian_kelas = c.kelas_id WHERE a.uraian_mapel = '$id_mapel' AND a.uraian_hapus = 0 AND kelas_id = '$id_kelas' order by a.uraian_id DESC")->result_array();
 		    }else{
-		    	$data['data'] = $this->db->query("SELECT * FROM t_uraian as a JOIN t_mapel as b ON a.uraian_mapel = b.mapel_id WHERE a.uraian_hapus = 0 order by a.uraian_id DESC")->result_array();
+		    	$data['data'] = $this->db->query("SELECT * FROM t_uraian as a JOIN t_mapel as b ON a.uraian_mapel = b.mapel_id JOIN t_kelas as c ON a.uraian_kelas = c.kelas_id WHERE a.uraian_hapus = 0 order by a.uraian_id DESC")->result_array();
 		    }
 		    
 		    $this->load->view('v_template_admin/admin_header',$data);
@@ -41,11 +42,14 @@ class Uraian extends CI_Controller{
 			$data['title'] = 'BIMBEL | URAIAN';
 		    $data['breadcumb'] = 'URAIAN';
 		    $id_mapel = $this->session->userdata('mapel');
+		    $id_kelas = $this->session->userdata('kelas');
 
 		    if ($this->session->userdata('level') == '2') {
 		    	$data['mapel_data'] = $this->db->query("SELECT * FROM t_mapel WHERE mapel_id = '$id_mapel' AND mapel_hapus = 0")->result_array();
+		    	$data['kelas_data'] = $this->db->query("SELECT * FROM t_kelas WHERE kelas_id = '$id_kelas' AND kelas_hapus = 0")->result_array();
 		    }else{
 		    	$data['mapel_data'] = $this->db->query("SELECT * FROM t_mapel WHERE mapel_hapus = 0")->result_array();
+		    	$data['kelas_data'] = $this->db->query("SELECT * FROM t_kelas WHERE kelas_hapus = 0")->result_array();
 		    }
 		    
 		    $this->load->view('v_template_admin/admin_header',$data);
@@ -63,22 +67,30 @@ class Uraian extends CI_Controller{
 		    $data['breadcumb'] = 'URAIAN';
 		    $data['id'] = $id;
 		    $id_mapel = $this->session->userdata('mapel');
+		    $id_kelas = $this->session->userdata('kelas');
 
 		    if ($this->session->userdata('level') == '2') {
 		    	$data['mapel_data'] = $this->db->query("SELECT * FROM t_mapel WHERE mapel_id = '$id_mapel' AND mapel_hapus = 0")->result_array();
+		    	$data['kelas_data'] = $this->db->query("SELECT * FROM t_kelas WHERE kelas_id = '$id_kelas' AND kelas_hapus = 0")->result_array();
 		    }else{
 		    	$data['mapel_data'] = $this->db->query("SELECT * FROM t_mapel WHERE mapel_hapus = 0")->result_array();
+		    	$data['kelas_data'] = $this->db->query("SELECT * FROM t_kelas WHERE kelas_hapus = 0")->result_array();
 		    }
 		    
-		    $db = $this->db->query("SELECT * FROM t_uraian as a JOIN t_mapel as b ON a.uraian_mapel = b.mapel_id where a.uraian_id = '$id'")->row_array();
+		    $db = $this->db->query("SELECT * FROM t_uraian as a JOIN t_mapel as b ON a.uraian_mapel = b.mapel_id JOIN t_kelas as c ON a.uraian_kelas = c.kelas_id where a.uraian_id = '$id'")->row_array();
 
 		    //soal di pecah bentuk array//
 			$soal = '['.$db['uraian_soal'].']';
 			$x = json_decode($soal,true);
 			$data['data'] = $x[0];
 
+			//mapel
 			$data['mapel_val'] = $db['mapel_nama'];
 			$data['mapel_id'] = $db['mapel_id'];
+
+			//kelas
+			$data['kelas_val'] = $db['kelas_nama'];
+			$data['kelas_id'] = $db['kelas_id'];
 
 			$this->load->view('v_template_admin/admin_header',$data);
 		    $this->load->view('uraian/edit');
@@ -96,6 +108,7 @@ class Uraian extends CI_Controller{
 						'uraian_judul' => $_POST['uraian_judul'],
 						'uraian_soal' => json_encode($_POST), 
 						'uraian_mapel' => $_POST['uraian_mapel'],
+						'uraian_kelas' => $_POST['uraian_kelas'],
 					);
 
 			$this->db->where('uraian_id',$id);
@@ -114,6 +127,7 @@ class Uraian extends CI_Controller{
 						'uraian_status' => 0,
 						'uraian_tanggal' => date('Y-m-d'), 
 						'uraian_mapel' => $_POST['uraian_mapel'],
+						'uraian_kelas' => $_POST['uraian_kelas'],
 					);
 
 			$this->db->set($set);

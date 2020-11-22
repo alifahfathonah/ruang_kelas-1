@@ -3,7 +3,7 @@
       <div class="container-fluid">
         <div class="header-body">
         </div>
-      </div>
+      </div> 
     </div>
     <!-- Page content -->
 
@@ -28,6 +28,7 @@
                     <th>Tumbnal</th>
                     <th>Title</th>
                     <th>Mapel</th>
+                    <th>Kelas</th>
                   <?php if($this->session->userdata('level') < 3): ?>
                     <th>Aksi</th>
                   <?php endif ?>
@@ -44,6 +45,7 @@
 
                       <td><?php echo $key['film_judul']; ?></td>
                       <td><?php echo $key['mapel_nama']; ?></td>
+                      <td><?php echo $key['kelas_nama']; ?></td>
                     <?php if($this->session->userdata('level') < 3): ?>
                       <div style="width: 130px;">
                         <td>
@@ -84,6 +86,19 @@
                                           <option value="<?php echo $key['film_mapel'] ?>" hidden=""><?php echo $key['mapel_nama'] ?></option>
                                           <?php foreach ($mapel_data as $key1): ?>
                                             <option value="<?php echo $key1['mapel_id'] ?>"><?php echo $key1['mapel_nama'] ?></option>
+                                          <?php endforeach ?>
+                                        </select>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label class="col-form-label form-control-label">Kelas</label>
+                                        <select required="" class="form-control" name="film_kelas">
+                                          <option value="<?php echo $key['film_kelas'] ?>" hidden=""><?php echo $key['kelas_nama'] ?></option>
+                                          <?php foreach ($kelas_data as $key1): ?>
+                                            <option value="<?php echo $key1['kelas_id'] ?>"><?php echo $key1['kelas_nama'] ?></option>
                                           <?php endforeach ?>
                                         </select>
                                     </div>
@@ -146,6 +161,19 @@
                             <option value="" hidden="">-- Pilih --</option>
                             <?php foreach ($mapel_data as $key): ?>
                               <option value="<?php echo $key['mapel_id'] ?>"><?php echo $key['mapel_nama'] ?></option>
+                            <?php endforeach ?>
+                          </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="col-form-label form-control-label">Kelas</label>
+                          <select required="" class="form-control" name="film_kelas">
+                            <option value="" hidden="">-- Pilih --</option>
+                            <?php foreach ($kelas_data as $key): ?>
+                              <option value="<?php echo $key['kelas_id'] ?>"><?php echo $key['kelas_nama'] ?></option>
                             <?php endforeach ?>
                           </select>
                       </div>

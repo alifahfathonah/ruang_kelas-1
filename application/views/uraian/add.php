@@ -4,7 +4,7 @@
         </div>
       </div>
     </div>
-    <!-- Page content -->
+    <!-- Page content --> 
 
 <div class="container-fluid mt--6">
       <!-- Table -->
@@ -26,11 +26,21 @@
                    <label>Judul Pertanyaan</label>
                    <input value="" required="" type="text" name="uraian_judul" class="form-control">
                  </div>
+
                  <div class="form-group col-md-12">
                   <select class="form-control" name="uraian_mapel" required="">
-                    <option hidden="" value="">-- Pilih --</option>
+                    <option hidden="" value="">-- Pilih Mapel --</option>
                     <?php foreach ($mapel_data as $key): ?>
                       <option value="<?php echo $key['mapel_id'] ?>"><?php echo $key['mapel_nama'] ?></option>
+                    <?php endforeach ?>
+                  </select>
+                 </div>
+
+                 <div class="form-group col-md-12">
+                  <select class="form-control" name="uraian_kelas" required="">
+                    <option hidden="" value="">-- Pilih Kelas--</option>
+                    <?php foreach ($kelas_data as $key): ?>
+                      <option value="<?php echo $key['kelas_id'] ?>"><?php echo $key['kelas_nama'] ?></option>
                     <?php endforeach ?>
                   </select>
                  </div>

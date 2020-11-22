@@ -8,7 +8,7 @@
     <!-- Page content -->
 
 <div class="container-fluid mt--6">
-      <!-- Table -->
+      <!-- Table --> 
       <div class="row"> 
         <div class="col">
           <div class="card"> 
@@ -27,6 +27,7 @@
                     <th style="width: 1px;">No</th>
                     <th>Judul</th>
                     <th>Mapel</th>
+                    <th>Kelas</th>
                     <th>Tanggal</th>
                     <th>Aksi</th>
                   </tr>
@@ -39,6 +40,7 @@
 
                       <td style="width: 100%;"><?php echo $key['materi_judul']; ?></td>
                       <td style="width: 100%;"><?php echo $key['mapel_nama']; ?></td>
+                      <td style="width: 100%;"><?php echo $key['kelas_nama']; ?></td>
                       <td><?php echo $key['materi_tanggal']; ?></td>
                       <div style="width: 130px;">
                         <td>

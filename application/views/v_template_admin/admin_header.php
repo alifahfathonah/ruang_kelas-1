@@ -10,7 +10,7 @@
   <!-- Favicon -->
   <link rel="icon" href="<?php echo base_url() ?>assets/pengaturan/icon.png" type="image/png">
 
-  <!-- Fonts --> 
+  <!-- Fonts -->  
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   
   <!-- Block --> 
@@ -81,22 +81,34 @@
             <?php if ($this->session->userdata('level') == 1): ?>
               
               <li class="nav-item">
+                <a class="nav-link" href=" <?php echo base_url('kelas') ?>"> 
+                  <i class="ni ni-building text-pink"></i> Kelas
+                </a>
+              </li>
+
+              <li class="nav-item">
                 <a class="nav-link" href=" <?php echo base_url('mapel') ?>"> 
                   <i class="ni ni-briefcase-24 text-green"></i> Mata Pelajaran
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('siswa') ?>"> 
-                  <i class="ni ni-single-02 text-red"></i>Data&#160;Siswa
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('guru') ?>"> 
-                  <i class="ni ni-archive-2 text-black"></i>Data&#160;Guru
+                  <i class="ni ni-archive-2 text-red"></i>Data&#160;Guru
                 </a>
               </li>
+
             <?php endif ?>
+
+            <?php if ($this->session->userdata('level') < 3): ?>
+
+              <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('siswa') ?>"> 
+                  <i class="ni ni-single-02 text-black"></i>Data&#160;Siswa
+                </a>
+              </li>
+
+             <?php endif ?>
 
               <!-- <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('kurikulum') ?>">
@@ -125,7 +137,7 @@
                   <ul class="nav nav-sm flex-column">
 
                   <?php if ($this->session->userdata('level') < 3): ?>
-                    <li class="nav-item">
+                    <li class="nav-item"> 
                       <a href="<?php echo base_url('uraian') ?>" class="nav-link">Soal Uraian</a>
                     </li>
                     <li class="nav-item">

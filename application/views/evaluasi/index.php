@@ -5,11 +5,11 @@
         </div>
       </div>
     </div> 
-    <!-- Page content -->
+    <!-- Page content --> 
 
 <div class="container-fluid mt--6">
       <!-- Table --> 
-      <div class="row"> 
+      <div class="row">   
         <div class="col">
           <div class="card">
             <!-- Card header -->
@@ -23,7 +23,9 @@
                     <th style="width: 1px;">No</th>
                     <th>Judul</th>
                     <th>Mapel</th>
+                    <th>Kelas</th>
                     <th>Jumlah</th>
+                    <th>Waktu</th>
                     <th>Tanggal</th>
                     <th>Aksi</th>
                   </tr>
@@ -35,7 +37,9 @@
                       <td><?php echo $no; ?></td>
                       <td style="width: 100%;"><?php echo $key['evaluasi_judul'] ?></td>
                       <td><?php echo $key['mapel_nama'] ?></td>
+                      <td><?php echo $key['kelas_nama'] ?></td>
                       <td><?php echo $key['evaluasi_jumlah'] ?></td>
+                      <td><?php echo $key['evaluasi_timer'] ?> Menit</td>
                       <td><?php echo $key['evaluasi_tanggal'] ?></td>
                       <div style="width: 130px;">
                         <td>
@@ -85,11 +89,34 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
+                        <label class="col-form-label form-control-label">Waktu Pengerjaan <small class="text-danger">( menit )</small></label>
+                        <input class="form-control" required="" name="evaluasi_timer" type="number" value="" id="example-text-input">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
                         <label class="col-form-label form-control-label">Mata Pelajaran</label>
                         <select id="mapel" class="form-control" required="" name="evaluasi_mapel">
                           <option value="" hidden="">-- Pilih --</option>
                           <?php foreach ($mapel_data as $key): ?>
                             <option value="<?php echo $key['mapel_id'] ?>"><?php echo $key['mapel_nama'] ?></option>
+                          <?php endforeach ?>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label class="col-form-label form-control-label">Kelas</label>
+                        <select id="mapel" class="form-control" required="" name="evaluasi_kelas">
+                          <option value="" hidden="">-- Pilih --</option>
+                          <?php foreach ($kelas_data as $key): ?>
+                            <option value="<?php echo $key['kelas_id'] ?>"><?php echo $key['kelas_nama'] ?></option>
                           <?php endforeach ?>
                         </select>
                       </div>

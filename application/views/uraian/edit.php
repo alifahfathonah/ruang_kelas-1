@@ -16,7 +16,7 @@
                 <h3 class="mb-0"><?php echo $title; ?></h3>
               </div>
               <!-- Card body --> 
-              <div class="card-body">
+              <div class="card-body"> 
                 <div class="box-body">
 
 
@@ -27,6 +27,7 @@
                    <input value="<?php echo $data['uraian_judul'] ?>" required="" type="text" name="uraian_judul" class="form-control">
                    <input type="hidden" name="id" value="<?php echo $this->uri->segment(3) ?>">
                  </div>
+
                  <div class="form-group col-md-12">
                   <select class="form-control" name="uraian_mapel" required="">
                     
@@ -34,6 +35,18 @@
 
                     <?php foreach ($mapel_data as $key): ?>
                       <option value="<?php echo $key['mapel_id'] ?>"><?php echo $key['mapel_nama'] ?></option>
+                    <?php endforeach ?>
+                  
+                  </select>
+                 </div>
+
+                 <div class="form-group col-md-12">
+                  <select class="form-control" name="uraian_kelas" required="">
+                    
+                    <option hidden="" value="<?php echo $kelas_id ?>"><?php echo $kelas_val; ?></option>
+
+                    <?php foreach ($kelas_data as $key): ?>
+                      <option value="<?php echo $key['kelas_id'] ?>"><?php echo $key['kelas_nama'] ?></option>
                     <?php endforeach ?>
                   
                   </select>
