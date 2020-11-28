@@ -39,6 +39,7 @@
 
   <!--jquery -->
   <script src="<?php echo base_url() ?>/argon/assets/vendor/jquery/dist/jquery.min.js"></script>
+
 </head>
 
 <?php if ($this->session->userdata('latar-status') == 'on'): ?>

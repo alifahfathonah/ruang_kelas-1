@@ -87,7 +87,9 @@
                                 <small class="text-danger">* Photos cannot be larger than 2 MB</small>
                                 <br/>
 
-                                <a href="<?php echo base_url('assets/soal/').@$soal[$i]['gambar'.$i].'.jpeg' ?>" target="_blank"><button style="margin-top: 1%;" type="button" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> view image</button></a>
+                                <?php if (@$soal[$i]['gambar'.$i]): ?>
+                                  <a href="<?php echo base_url('assets/soal/').@$soal[$i]['gambar'.$i].'.jpeg' ?>" target="_blank"><button style="margin-top: 1%;" type="button" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> view image</button></a>
+                                <?php endif ?>
 
                               </div>
                             </div>
@@ -130,14 +132,6 @@
                           </div>
                       </div>
 
-                      <div class="form-group row">
-                          <label class="col-md-1 col-form-label form-control-label">E. </label>
-                          <div class="col-md-10">
-
-                            <input type="text" required="" class="form-control" name="e<?php echo $i; ?>" value="<?php echo @$soal[$i]['e'.$i] ?>">
-                           
-                          </div>
-                      </div>
 
                       <div class="form-group row">
                         <div class="col-md-1 col-form-label form-control-label"><label>Kunci</label></div>
@@ -148,7 +142,6 @@
                             <option value="B">B</option>
                             <option value="C">C</option>
                             <option value="D">D</option>
-                            <option value="E">E</option>
                           </select>
                         </div>
                       </div>
