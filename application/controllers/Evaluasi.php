@@ -86,8 +86,12 @@ class Evaluasi extends CI_Controller{
 		$path = 'assets/soal';
 		$idsoal = $_POST['evaluasi_id'];
 
-		for ($i=1; $i < $jum+1 ; $i++) { 
-			move_uploaded_file($_FILES['file'.$i]['tmp_name'], $path.'/'.$idsoal.'_'.$i.'.jpeg');
+		for ($i=1; $i < $jum+1 ; $i++) {
+			if ($_FILES['file'.$i]['tmp_name']) {
+			 	move_uploaded_file($_FILES['file'.$i]['tmp_name'], $path.'/'.$idsoal.'_'.$i.'.jpeg');
+			} 
+
+			print_r($_FILES['file'.$i]['tmp_name']);
 		}
 
 		$uraian = $_POST['evaluasi_uraian'];

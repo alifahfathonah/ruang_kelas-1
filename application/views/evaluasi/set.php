@@ -10,7 +10,7 @@
 <div class="container-fluid mt--6">  
       <!-- Table --> 
       <div class="row">
-        <div class="col"> 
+        <div class="col">  
           <div class="card">
               <!-- Card header -->
               <div class="card-header">
@@ -80,10 +80,11 @@
                               </div>
 
                               <div class="form-group">
-                                <input type="file" required="" class="form-control" name="file<?php echo $i+1; ?>" accept="image/*" multiple="">
-                                <input type="hidden" id="file1" name="gambar<?php echo $i+1; ?>" value="<?php echo $idsoal; ?>_<?php echo $i+1; ?>">
+                                <input onchange="file('file<?php echo $i+1; ?>','<?php echo $idsoal; ?>_<?php echo $i+1; ?>')" type="file" class="form-control" name="file<?php echo $i+1; ?>" accept="image/*" multiple="">
+                                <input type="hidden" id="file1" name="gambar<?php echo $i+1; ?>" value="">
                                 <small class="text-danger">* Photos cannot be larger than 2 MB</small>
                               </div>
+
                             </div>
                         </div>
 
@@ -125,15 +126,6 @@
                       </div>
 
                       <div class="form-group row">
-                          <label class="col-md-1 col-form-label form-control-label">E. </label>
-                          <div class="col-md-10">
-
-                            <input type="text" required="" class="form-control" name="e<?php echo $i+1; ?>">
-                           
-                          </div>
-                      </div>
-
-                      <div class="form-group row">
                         <div class="col-md-1 col-form-label form-control-label"><label>Kunci</label></div>
                         <div class="col-md-3">
                           <select class="form-control" name="soal_kunci_jawaban<?php echo $i+1; ?>" required="">
@@ -142,7 +134,6 @@
                             <option value="B">B</option>
                             <option value="C">C</option>
                             <option value="D">D</option>
-                            <option value="E">E</option>
                           </select>
                         </div>
                       </div>
@@ -162,4 +153,9 @@
 
             </div>
 
-             
+<script type="text/javascript">
+    function file(target,value){
+      //isi value gambar
+      $('#'+target).val(value);
+    }
+  </script>
